@@ -1,4 +1,4 @@
-import os, time, base64, urllib.request, requests, shutil, random
+import os, time, base64, urllib.request, requests, socket, random
 
 path = "/sdcard/Download/loginlog.txt"
 now = strtime = time.strftime("%Y/%m/%d %H:%M:%S")
@@ -23,6 +23,8 @@ if not os.path.exists("/sdcard/Mytool/download/apk/"):
     os.makedirs("/sdcard/Mytool/download/apk/")
 if not os.path.exists("/sdcard/Mytool/download/zip/"):
     os.makedirs("/sdcard/Mytool/download/zip/")
+if not os.path.exists("/sdcard/Mytool/Unzip/"):
+    os.makedirs("/sdcard/Mytool/Unzip/")
 
 
 
@@ -31,7 +33,7 @@ def logincode():
 
 def local():
     code = logincode()
-    print(f"本次验证码：{code}")  # 控制台显示
+    print(f"本次验证码：{code}")
     
     user_input = input("\n请输入验证码(防机器人)：")
     if user_input == code:
@@ -75,7 +77,7 @@ os.system("clear")
 while True:
     now = time.strftime("%Y/%m/%d %H:%M:%S")
     print("当前时间: ",now)
-    time.sleep(1)
+    time.sleep(0.000000000000001)
     
     
     
@@ -86,7 +88,7 @@ while True:
     print("本工具由个人开发，并非集体开发\n如若有人恶意使用本工具做出违法犯罪行为\n与本人和本工具无关")
     print("---------功能区---------")
     print("1.base64加密/解密 2.获取网页源代码 3.各种网页")
-    print("4.下载文件 5.学习编程 6.功能六")
+    print("4.下载文件 5.学习编程 6.网速")
     print("7.更多功能 8.关于 9.退出")
     home = input()
 
@@ -129,7 +131,7 @@ while True:
                 url = ("http://" + surl)
                 rename = input("输入名称:\n")
                 res = requests.get(url, headers={"User-Agent":"Mozilla/5.0 (Android)"})
-                with open(f"/sdcard/Mytool/web/{rename}.txt","w",encoding="utf-8") as f:
+                with open(f"/sdcard/Mytool/web/{rename}.html","w",encoding="utf-8") as f:
                     f.write(res.text)
                 print("任务已完成，文件已输出到Mytool/web目录下")
                 time.sleep(3)
@@ -188,19 +190,30 @@ while True:
             if zipapk == "1":
                 urldownload = input("输入下载链接:\n")
                 
-                
-            
                 urllib.request.urlretrieve(urldownload, savea)
                 print(f"已下载到{savea}")
                 time.sleep(3)
+            
             if zipapk == "2":
                 urldownload = input("输入下载链接:\n")
                 
-                
-            
                 urllib.request.urlretrieve(urldownload, savez)
                 print(f"已下载到{savez}")
-                time.sleep(3)
+                print("是否需要解压？\n1.是(默认删除原文件) 2.否")
+                uz = input()
+                if uz == "1":
+                    zpath = input("请输入zip文件路径：")
+                    topath = input("解压到(默认Mytool)：") or "/sdcsrd/Mytool/Unzip/"
+                    if os.path.exists(zpath):
+                        os.system(f"unzip -o '{zpath}' -d '{topath}'")
+                        print("解压完成")
+                        print("正在删除文件......")
+                        os.system(f"rm -rf {zpath}")
+                    else:
+                        print("错误：文件不存在")
+                    time.sleep(3)
+                else:
+                    break
             if zipapk == "3":
                 break
     elif home == "5":
@@ -241,14 +254,48 @@ while True:
     elif home == "6":
         while True:
             print("输入选择项")
-            sixird = input("1.返回\n")
+            sixird = input("1.测试 2.返回\n")
             if sixird == "1":
+                print("测试下载速度...")
+                try:
+                    url = "http://speed.hetzner.de/10MB.bin"
+                    st = time.time()
+                    tmp_file = os.path.join("./", "tmp_speed.tmp")
+                    urllib.request.urlretrieve(url, tmp_file)
+                    cost = time.time() - st
+                    speed = 10 / cost
+                    print(f"下载速度：{speed:.2f} MB/s")
+                    os.remove(tmp_file)
+                except Exception as e:
+                    print(f"测速失败：{e}")
+                time.sleep(2)
+            elif sixird == "2":
                 break
+    
     elif home == "7":
         while True:
             print("输入选择项")
-            sevenird = input("1.返回\n")
+            sevenird = input("1.设备信息 2.解压文件 3.返回\n")
             if sevenird == "1":
+                print("===== 设备信息 =====")
+                os.system("uname -a")
+                print("===== 内存信息 =====")
+                os.system("free -h")
+                print("===== 磁盘信息 =====")
+                os.system("df -h")
+                input("\n回车返回")
+            elif sevenird == "2":
+                zpath = input("请输入zip文件路径：")
+                topath = input("解压到(默认Mytool)：") or "/sdcsrd/Mytool/Unzip/"
+                if os.path.exists(zpath):
+                    os.system(f"unzip -o '{zpath}' -d '{topath}'")
+                    print("解压完成")
+                    print("正在删除文件......")
+                    os.system(f"rm -rf {zpath}")
+                else:
+                    print("错误：文件不存在")
+                time.sleep(3)
+            elif sevenird == "3":
                 break
     elif home == "8":
         while True:
