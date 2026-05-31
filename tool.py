@@ -141,15 +141,16 @@ while True:
     elif home == "3":
         while True:
             os.system("clear")
-            print("1.懂得都懂 2.刷机 3.海量视频资源网址 \n")
+            print("1.懂得都懂 2.刷机 3.海量视频资源网址 4.漫画(sq\n")
             third = input("输入以上数字跳转\n")
             if third == "1":
-                sec = input("1.软件网站 2.在线网站\n")
+                sec = input("1.软件网站 2.在线网站 3.JM(可能能访问)\n")
                 if sec == "1":
                     ourl("http://520521.com")
-                if sec == "2":
-                    print("https://520621.com")
-                    time.sleep(3)
+                elif sec == "2":
+                    ourl("https://1pvfnn.0450.me/")
+                elif sec == "3":
+                    ourl("https://18comic.vip")
                 else:
                     break
             elif third == "2":
@@ -181,6 +182,16 @@ while True:
                         break
             elif third == "3":
                 ourl("http://www.hainatv.net")
+            elif third == "4":
+                while True:
+                    print("(下载apk)  1.漫蛙(网页) 2.漫蛙(apk)")
+                    manhua = input()
+                    if manhua == "1":
+                        ourl("https://fuwbi.cc/mw666")
+                    elif manhua == "2":
+                        ourl("https://manwa.me/")
+                    else:
+                        break
             else:
                 break
     elif home == "4":
