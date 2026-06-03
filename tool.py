@@ -364,8 +364,7 @@ while True:
                         if WorC == "1":
                             print("暂时未找到下载办法....\n返回...")
                             exit()
-                        while True:
-                            elif WorC == "2":
+                        elif WorC == "2":
                                 print("1.快影 2.剪映")
                                 Ch = input()
                                 if Ch == "1":
