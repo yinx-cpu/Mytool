@@ -52,23 +52,9 @@ if not os.path.exists(path):
         f.write("首次运行时间："+strtime)
         print(f"已写入此次运行时间到{path}\n")
         time.sleep(1)
-        print("""本次更新日志:\n
-        1.
-        增加剪辑页面
-        2.
-        增加一个大分支
-        3.
-        启动界面改为:
-        "运行时间"
-        "本次更新日志"
-        "过往更新日志"
-        ----2026.6.3""")
+        print("本次更新日志:\n1.增加剪辑页面\n2.增加一个大分支\n3.启动界面改为:\n运行时间\n本次更新日志\n过往更新日志\n         ----2026.6.3")
         time.sleep(1)
-        print("""过往更新日志:1.
-        将文件下载改为选择单/多线程下载
-        2.
-        将解压合并到zip文件下载内
-        ----2026.4.18""")
+        print("\n过往更新日志:\n1.将文件下载改为选择单/多线程下载\n2.将解压合并到zip文件下载内\n         ----2026.4.18")
         time.sleep(5)
 
 else:
@@ -76,6 +62,10 @@ else:
         f.write("\n运行时间："+strtime)
         print(f"已写入此次运行时间到{path}\n")
         time.sleep(1)
+        print("本次更新日志:\n1.增加剪辑页面\n2.增加一个大分支\n3.启动界面改为:\n运行时间\n本次更新日志\n过往更新日志\n         ----2026.6.3")
+        time.sleep(1)
+        print("\n过往更新日志:\n1.将文件下载改为选择单/多线程下载\n2.将解压合并到zip文件下载内\n         ----2026.4.18")
+        time.sleep(10)
 
 def b64_encode(s):
     return base64.b64encode(s.encode("utf-8")).decode("utf-8")
@@ -90,8 +80,6 @@ def c():
     os.system("clear")
 
 time.sleep(1)
-os.system("clear")
-local()
 os.system("clear")
 
 while True:
@@ -376,7 +364,7 @@ while True:
                     elif jianji == "2":
                         print("暂时不知如何做....")
         else:
-            print("输入正确！")
+            print("输入正确序号！！")
             print("3秒后退出")
             time.sleep(3)
             exit()
