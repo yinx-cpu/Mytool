@@ -26,35 +26,55 @@ if not os.path.exists("/sdcard/Mytool/download/zip/"):
 if not os.path.exists("/sdcard/Mytool/Unzip/"):
     os.makedirs("/sdcard/Mytool/Unzip/")
 
+def sleeptime():
+    time.sleep(1)
 
+#def logincode():
+#    return str(random.randint(100000, 999999))
 
-def logincode():
-    return str(random.randint(100000, 999999))
-
-def local():
-    code = logincode()
-    print(f"本次验证码：{code}")
+#def local():
+#    code = logincode()
+#    print(f"本次验证码：{code}")
     
-    user_input = input("\n请输入验证码(防机器人)：")
-    if user_input == code:
-        print("验证成功")
-        time.sleep(1)
-    else:
-        print("验证失败")
-        time.sleep(5)
-        exit()
+#    user_input = input("\n请输入验证码(防机器人)：")
+#    if user_input == code:
+#        print("验证成功")
+#        time.sleep(1)
+#    else:
+#        print("验证失败")
+#        time.sleep(5)
+#        exit()
 
 
 os.system("clear")
 if not os.path.exists(path):
     with open(path, "w", encoding="utf-8") as f:
         f.write("首次运行时间："+strtime)
-        print(f"已写入此次运行时间到{path}\n" * 3)
+        print(f"已写入此次运行时间到{path}\n")
         time.sleep(1)
+        print("""本次更新日志:\n
+        1.
+        增加剪辑页面
+        2.
+        增加一个大分支
+        3.
+        启动界面改为:
+        "运行时间"
+        "本次更新日志"
+        "过往更新日志"
+        ----2026.6.3""")
+        time.sleep(1)
+        print("""过往更新日志:1.
+        将文件下载改为选择单/多线程下载
+        2.
+        将解压合并到zip文件下载内
+        ----2026.4.18""")
+        time.sleep(5)
+
 else:
     with open(path, "a", encoding="utf-8") as f:
         f.write("\n运行时间："+strtime)
-        print(f"已写入此次运行时间到{path}\n" * 3)
+        print(f"已写入此次运行时间到{path}\n")
         time.sleep(1)
 
 def b64_encode(s):
