@@ -341,7 +341,7 @@ def about():
 def video_edit():
     while True:
         clear()
-        print("剪辑专区\n1. 下载软件\n2. 教学(暂无)")
+        print("剪辑专区\n1. 下载软件\n2.返回")
         ch = input()
         if ch == "1":
             print("1. 国际(需VPN)\n2. 国内")
@@ -720,6 +720,36 @@ def js_editor():
     except OSError:
         pass
 
+def startgame():
+    while True:
+        print("选择你要启动的游戏\n1.和平精英 2.王者荣耀 3.暗区突围 4.PUBG MOBILE 5.返回\n")
+        gamestart = int(input())
+        if gamestart == 1:
+            os.system("am start -n com.tencent.tmgp.pubgmhd/com.epicgames.ue4.SplashActivity")
+        elif gamestart == 2:
+            os.system("com.tencent.tmgp.sgame/com.tencent.tmgp.sgame.SGameActivity")
+        elif gamestart == 3:
+            os.system("am start -n com.tencent.mf.uam/com.epicgames.ue4.GameActivity")
+        elif gamestart == 4:
+            while True:
+                print("1.全球 2.日韩 3.台湾 4.越南 5.返回")
+                pubgm = int(input())
+                if pubgm == 1:
+                    os.system("am start -n com.tencent.ig/com.epicgames.ue4.SplashActivity")
+                elif pubgm == 2:
+                    os.system("am start -n com.pubg.krmobile/com.epicgames.ue4.SplashActivity")
+                elif pubgm == 3:
+                    os.system("am start -n com.rekoo.pubgm/com.epicgames.ue4.SplashActivity")
+                elif pubgm == 4:
+                    os.system("am start -n com.vng.pubgmobile/com.epicgames.ue4.SplashActivity")
+                else:
+                    break
+        else:
+            break
+
+
+
+
 def main():
     clear()
 
@@ -727,16 +757,16 @@ def main():
         with open(LOG_PATH, "w", encoding="utf-8") as f:
             f.write(f"首次运行时间：{get_time_str()}")
         
-        print("本次更新日志:\n1.增加更多功能:已安装应用名称列表-网络工具-备份恢复文件-文件工具-三种主流语言可执行窗口(需要装载对应命令)\n         ----2026.6.4")
+        print("本次更新日志:\n1.增加功能:快捷启动游戏\n2.更改页面名称以及部分功能排序\n        ----2026.6.6")
         time.sleep(1)
-        print("\n过往更新日志:\n1.增加剪辑页面\n2.增加一个大分支\n3.启动界面改为:\n运行时间\n本次更新日志\n过往更新日志\n         ----2026.6.3\n\n1.将文件下载改为选择单/多线程下载\n2.将解压合并到zip文件下载内\n         ----2026.4.18")
-    time.sleep(3)
+        print("\n过往更新日志:1..增加更多功能:已安装应用名称列表-网络工具-备份恢复文件-文件工具-三种主流语言可执行窗口(需要装载对应命令)\n         ----2026.6.4\n\n1.增加剪辑页面\n2.增加一个大分支\n3.启动界面改为:\n运行时间\n本次更新日志\n过往更新日志\n         ----2026.6.3\n\n1.将文件下载改为选择单/多线程下载\n2.将解压合并到zip文件下载内\n         ----2026.4.18")
+        time.sleep(3)
     else:
         log_runtime()
-        print("本次更新日志:\n1.增加更多功能:已安装应用名称列表-网络工具-备份恢复文件-文件工具-三种主流语言可执行窗口(需要装载对应命令)\n         ----2026.6.4")
+        print("本次更新日志:\n1.增加功能:快捷启动游戏\n2.更改页面名称以及部分功能排序\n        ----2026.6.6")
         time.sleep(1)
-        print("\n过往更新日志:\n1.增加剪辑页面\n2.增加一个大分支\n3.启动界面改为:\n运行时间\n本次更新日志\n过往更新日志\n         ----2026.6.3\n\n1.将文件下载改为选择单/多线程下载\n2.将解压合并到zip文件下载内\n         ----2026.4.18")
-    time.sleep(1)
+        print("\n过往更新日志:1..增加更多功能:已安装应用名称列表-网络工具-备份恢复文件-文件工具-三种主流语言可执行窗口(需要装载对应命令)\n         ----2026.6.4\n\n1.增加剪辑页面\n2.增加一个大分支\n3.启动界面改为:\n运行时间\n本次更新日志\n过往更新日志\n         ----2026.6.3\n\n1.将文件下载改为选择单/多线程下载\n2.将解压合并到zip文件下载内\n         ----2026.4.18")
+        time.sleep(3)
 
     while True:
         clear()
@@ -746,19 +776,20 @@ def main():
         print("---------介绍---------")
         print("本工具由个人开发，并非集体开发\n如若有人恶意使用本工具做出违法犯罪行为\n与本人和本工具无关")
         print("---------功能区---------")
-        print("1. 杂七杂八\n2. 剪辑专区\n3.退出")
+        print("1. 总体\n2. 剪辑专区\n3.退出")
         big = input()
         if big == "1":
             while True:
                 clear()
-                print("1. Base64加解密     2. 获取网页源码")
-                print("3. 常用网址         4. 下载文件")
-                print("5. 学习编程         6. 网速测试")
-                print("7. 更多功能         8. 关于")
-                print("9. 编程窗口       10. 详细设备信息")
-                print("11. 应用列表导出    12. 清理垃圾文件")
-                print("13. 网络工具        14. 备份/恢复")
-                print("15. 文件工具        16. 返回主菜单")
+                print("1.Base64加解密          2. 获取网页源码")
+                print("3.常用网址             4. 下载文件")
+                print("5.学习编程             6. 网速测试")
+                print("7.更多功能             8. 关于")
+                print("9.编程窗口            10. 详细设备信息")
+                print("11.应用列表导出       12.清理垃圾文件")
+                print("13.网络工具            14.备份/恢复")
+                print("15.文件工具            16. 游戏快速启动")
+                print("17. 返回")
                 cmd = input("请选择: ")
             
                 if cmd == "1":
@@ -817,9 +848,11 @@ def main():
                 elif cmd == "15":
                     file_tools()
                 elif cmd == "16":
+                    startgame()
+                elif cmd == "17":
                     break
                 else:
-                    print("无效输入，请输入1-16")
+                    print("无效输入，请输入1-17")
                     time.sleep(1)
         elif big == "2":
             video_edit()
